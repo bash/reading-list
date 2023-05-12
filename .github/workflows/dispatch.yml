@@ -3,7 +3,7 @@ on:
   issues:
 jobs:
   trigger:
-    if: "${{ github.event.issue.author_association == 'OWNER' || contains('accepted', github.event.issue.labels) }}"
+    if: github.event.issue.author_association == 'OWNER'
     runs-on: ubuntu-latest
     steps:
     - name: Generate a token
