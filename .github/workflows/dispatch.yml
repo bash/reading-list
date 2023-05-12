@@ -1,0 +1,17 @@
+name: Trigger Website Build
+on:
+  issues:
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Trigger Website Build
+      uses: actions/github-script@v5
+      with:
+        script: |
+          await github.rest.actions.createWorkflowDispatch({
+              owner: 'bash',
+              repo: 'bash.github.io',
+              workflow_id: 'ci.yml',
+              ref: 'main',
+          });
